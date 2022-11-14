@@ -1,0 +1,5 @@
+/* You can add global styles to this file, and also import other style files */
+// The @import CSS rule accepts the absolute path of the bootstrap.scss
+// file as an option, without adding the .scss extension
+// The ~ character represents the node_modules folder of our Angular application
+@import "~bootstrap/scss/bootstrap";
