@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'articles', loadChildren: () => import('./articles/articles.module').then(m => m.ArticlesModule) },
   // default route
   { path: '', pathMatch: 'full', redirectTo: 'articles' },
+  { path: 'posts', loadChildren: () => import('./posts/posts.module').then(m => m.PostsModule) },
   // wildcard route
   { path: '**', redirectTo: 'articles' }
 ];
