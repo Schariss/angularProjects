@@ -10,6 +10,8 @@ import { IssuesService } from '../issues.service';
 export class IssueListComponent implements OnInit {
 
   issues: Issue[] = [];
+  // The showReportIssue property will toggle the appearance of the report issue form
+  showReportIssue = false;
 
   constructor(private issueService: IssuesService) { }
 
@@ -19,6 +21,14 @@ export class IssueListComponent implements OnInit {
 
   getIssues() {
     this.issues = this.issueService.getPendingIssues();
+  }
+
+  // The onCloseReport method will set the showReportIssue property to false
+  // so that the report issue form is no longer visible, and the table of pending issues is
+  // displayed instead
+  onCloseReport() {
+    this.showReportIssue = false;
+    this.getIssues();
   }
 
 }
