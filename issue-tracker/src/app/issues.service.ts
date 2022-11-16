@@ -19,4 +19,14 @@ export class IssuesService {
     issue.issueNo = ++this.issues.length;
     this.issues.push(issue);
   }
+
+  completeIssue(issue: Issue) {
+    this.issues = this.issues.map(is => {
+      if(is === issue){
+        return {...issue, completed: new Date()};
+      }
+      return issue;
+    });
+  }
+  
 }

@@ -10,6 +10,11 @@ screen, and it is used to group HTML elements -->
         <clr-dg-column [clrDgField]="'priority'">Priority</clr-dg-column>
 
         <clr-dg-row *clrDgItems="let issue of issues">
+            <!-- The clr-dg-action-overflow component of Clarity adds a drop-down
+                menu in each row of the table -->
+            <clr-dg-action-overflow>
+                <button class="action-item" (click)="selectedIssue = issue">Resolve</button>
+            </clr-dg-action-overflow>
             <clr-dg-cell>{{issue.issueNo}}</clr-dg-cell>
             <clr-dg-cell>{{issue.type}}</clr-dg-cell>
             <clr-dg-cell>{{issue.title}}</clr-dg-cell>
@@ -23,3 +28,5 @@ screen, and it is used to group HTML elements -->
     </clr-datagrid>
 </ng-container>
 <app-issue-report *ngIf="showReportIssue === true" (formClose)="onCloseReport()"></app-issue-report>
+<app-confirm-dialog *ngIf="selectedIssue" 
+    [issueNo]="selectedIssue.issueNo" (confirm)="onConfirm($event)"></app-confirm-dialog>
