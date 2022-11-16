@@ -25,8 +25,15 @@ export class IssuesService {
       if(is === issue){
         return {...issue, completed: new Date()};
       }
-      return issue;
+      return is;
     });
+  }
+
+  getSuggestions(title: string): Issue[] {
+    if(title.length > 3) {
+      return this.issues.filter( issue => issue.title.indexOf(title) != -1);
+    }
+    return [];
   }
   
 }
